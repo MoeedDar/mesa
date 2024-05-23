@@ -36,24 +36,15 @@ player::player(flecs::world& world) {
     .set<Model>(LoadModelFromMesh(GenMeshCube(1.0f, 2.0f, 1.0f)));
 
   world.system<const Move, const Rotation, Velocity>()
-    .arg(1)
-    .src<Input>()
     .arg(2)
     .src<Player>()
     .arg(3)
     .src<Player>()
     .each(move);
 
-  world.system<const Look, AngularVelocity>()
-    .arg(1)
-    .src<Input>()
-    .arg(2)
-    .src<Player>()
-    .each(spin);
+  world.system<const Look, AngularVelocity>().arg(2).src<Player>().each(spin);
 
   world.system<const Look, const Rotation, Head>()
-    .arg(1)
-    .src<Input>()
     .arg(2)
     .src<Player>()
     .arg(3)
