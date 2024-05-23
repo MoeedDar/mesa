@@ -1,0 +1,7 @@
+AlignAfterOpenBracket: BlockIndent
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortFunctionsOnASingleLine: None
+ContinuationIndentWidth: 2
+FixNamespaceComments: false
+InsertBraces: true
+PointerAlignment: Left
