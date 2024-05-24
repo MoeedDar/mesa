@@ -3,6 +3,7 @@
 #include <flecs.h>
 #include <raylib.h>
 #include <raymath.h>
+#include <rlgl.h>
 
 namespace mesa {
 
@@ -14,9 +15,11 @@ static void pre_render(const Camera& c) {
   BeginDrawing();
   ClearBackground(BLACK);
   BeginMode3D(c);
+  rlDisableBackfaceCulling();
 }
 
 static void post_render(flecs::iter& it) {
+  rlEnableBackfaceCulling();
   EndMode3D();
   EndDrawing();
 }

@@ -27,7 +27,7 @@ static void update_transform(flecs::entity e) {
   const Matrix sm = MatrixScale(s.x, s.y, s.z);
 
   // Propogate changes
-  e.set(Transform(MatrixMultiply(rm, MatrixMultiply(tm, sm))));
+  e.set(Transform(MatrixMultiply(rm, MatrixMultiply(sm, tm))));
 }
 
 template <typename T>

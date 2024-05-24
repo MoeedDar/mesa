@@ -1,4 +1,6 @@
+#include "animation.hpp"
 #include "camera.hpp"
+#include "config.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
 #include "physics.hpp"
@@ -6,13 +8,10 @@
 #include "transform.hpp"
 #include <flecs.h>
 #include <raylib.h>
-
-static constexpr const int WINDOW_WIDTH = 800;
-static constexpr const int WINDOW_HEIGHT = 600;
-static constexpr const char* WINDOW_TITLE = "Mesa";
+#include <rlgl.h>
 
 int main() {
-  InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
+  InitWindow(mesa::WINDOW_WIDTH, mesa::WINDOW_HEIGHT, mesa::WINDOW_TITLE);
   SetTargetFPS(60);
   DisableCursor();
 
@@ -20,13 +19,13 @@ int main() {
 
   world.import <mesa::transform>();
   world.import <mesa::graphics>();
+  world.import <mesa::animation>();
   world.import <mesa::camera>();
   world.import <mesa::physics>();
   world.import <mesa::input>();
   world.import <mesa::player>();
 
-  // world.entity().set<Model>(LoadModelFromMesh(GenMeshPlane(100, 100, 10,
-  // 10)));
+  // Load a bunch of random models for testing
 
   Model models[100];
   for (auto& m : models) {
